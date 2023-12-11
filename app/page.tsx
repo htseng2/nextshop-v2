@@ -1,7 +1,18 @@
 import React from "react";
-import { Product, FooterBanner, HeroBanner } from "./components";
 
-const Home = () => {
+import { Product, FooterBanner, HeroBanner } from "./components";
+import { client } from "@/sanity/lib/client";
+import { Product as ProductType } from "@/types/product";
+import { Banner } from "@/types/banner";
+
+interface HomeProps {
+  products: ProductType[];
+  bannerData: Banner;
+}
+
+const Home = async () => {
+  const { products, bannerData }: HomeProps = await getData();
+
   return (
     <>
       <HeroBanner />
@@ -10,13 +21,25 @@ const Home = () => {
         <p>Speakers of many variations</p>
       </div>
       <div className="products-container">
-        {["Product 1", "Product 2", "Product 3", "Product 4", "Product 5"].map(
-          (product) => product
-        )}
+        {products?.map((product) => product.name)}
       </div>
       <FooterBanner />
     </>
   );
 };
+
+//getServerSideProps not support at app/page level
+async function getData() {
+  const query = `*[_type == "product"]`;
+  const products = await client.fetch(query);
+
+  const bannerQuery = `*[_type == "banner"]`;
+  const bannerData = await client.fetch(bannerQuery);
+
+  return {
+    products,
+    bannerData,
+  };
+}
 
 export default Home;
