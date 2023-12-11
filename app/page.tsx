@@ -28,13 +28,23 @@ const Home = async () => {
   );
 };
 
-//getServerSideProps not support at app/page level
+// The getServerSideProps function is not supported at the app/page level.
+// Additionally, the sanity client also renders at the server side.
+
 async function getData() {
-  const query = `*[_type == "product"]`;
-  const products = await client.fetch(query);
+  const productQuery = `*[_type == "product"]`;
+  const products = await client.fetch(
+    productQuery,
+    {},
+    { next: { revalidate: 3600 } }
+  );
 
   const bannerQuery = `*[_type == "banner"]`;
-  const bannerData = await client.fetch(bannerQuery);
+  const bannerData = await client.fetch(
+    bannerQuery,
+    {},
+    { next: { revalidate: 3600 } }
+  );
 
   return {
     products,
