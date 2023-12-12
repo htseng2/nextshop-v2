@@ -12,7 +12,6 @@ interface HomeProps {
 
 const Home = async () => {
   const { products, bannerData }: HomeProps = await getData();
-  console.log(bannerData);
 
   return (
     <>
@@ -31,23 +30,15 @@ const Home = async () => {
   );
 };
 
-// The getServerSideProps function is not supported at the app/page level.
-// Additionally, the sanity client also renders at the server side.
+// Note: The getServerSideProps function is not compatible with app router.
+// Instead of using getServerSideProps for data fetching, Next.js recommends the following pattern:
 
 async function getData() {
   const productQuery = `*[_type == "product"]`;
-  const products = await client.fetch(
-    productQuery,
-    {},
-    { next: { revalidate: 3600 } }
-  );
+  const products = await client.fetch(productQuery);
 
   const bannerQuery = `*[_type == "banner"]`;
-  const bannerData = await client.fetch(
-    bannerQuery,
-    {},
-    { next: { revalidate: 3600 } }
-  );
+  const bannerData = await client.fetch(bannerQuery);
 
   return {
     products,
