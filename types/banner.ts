@@ -1,6 +1,7 @@
 import { Image } from "sanity";
 
 export type Banner = {
+  _id: string;
   image: Image;
   buttonText: string;
   product: string;
