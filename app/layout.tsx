@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Footer, Navbar } from "./components";
+import { StateContext } from "./context/StateContext";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,17 +20,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <title>Nextshop v2</title>
+        <title>Nextshop</title>
       </head>
 
       <body className={inter.className}>
-        <header>
-          <Navbar></Navbar>
-        </header>
-        <main className="main-container">{children}</main>
-        <footer>
-          <Footer />
-        </footer>
+        <StateContext>
+          <header>
+            <Navbar></Navbar>
+          </header>
+          <Toaster />
+          <main className="main-container">{children}</main>
+          <footer>
+            <Footer />
+          </footer>
+        </StateContext>
       </body>
     </html>
   );

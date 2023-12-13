@@ -5,3 +5,5 @@ export { default as HeroBanner } from "./HeroBanner";
 export { default as Navbar } from "./Navbar";
 export { default as Product } from "./Product";
 export { default as ImageMagnifier } from "./ImageMagnifier";
+export { default as QuantitySelector } from "./QuantitySelector";
+export { default as ProductActionButtons } from "./ProductActionButtons";
