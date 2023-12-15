@@ -1,5 +1,6 @@
 import { urlForImage } from "@/sanity/lib/image";
 import { Banner } from "@/types/banner";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -38,7 +39,11 @@ const FooterBanner = ({
             <button type="button">{buttonText}</button>
           </Link>
         </div>
-        <img src={urlForImage(image)} className="footer-banner-image" />
+        <img
+          src={urlForImage(image)}
+          className="footer-banner-image"
+          alt="footer-banner-image"
+        />
       </div>
     </div>
   );

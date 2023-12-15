@@ -3,6 +3,7 @@ import React from "react";
 
 import { Banner } from "@/types/banner";
 import { urlForImage } from "@/sanity/lib/image";
+import Image from "next/image";
 
 interface HeroBannerProps {
   heroBanner?: Banner;
@@ -15,11 +16,13 @@ const HeroBanner = ({ heroBanner }: HeroBannerProps) => {
         <p className="beats-solo">{heroBanner?.smallText}</p>
         <h3>{heroBanner?.midText}</h3>
         <h1>{heroBanner?.largeText1}</h1>
-        <img
-          src={heroBanner?.image && urlForImage(heroBanner.image)}
-          alt="headphones"
-          className="hero-banner-image"
-        />
+        {heroBanner?.image && (
+          <img
+            src={urlForImage(heroBanner.image)}
+            alt="headphones"
+            className="hero-banner-image"
+          />
+        )}
         <div>
           <Link href={`/product/${heroBanner?.product}`}>
             <button type="button">{heroBanner?.buttonText}</button>

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React from "react";
 import { useStateContext } from "../context/StateContext";
 import { CartItem } from "@/types/cartItem";
 import {
@@ -14,6 +14,7 @@ import { urlForImage } from "@/sanity/lib/image";
 import { TiDeleteOutline } from "react-icons/ti";
 import getStripe from "@/sanity/lib/getStripe";
 import toast from "react-hot-toast";
+import Image from "next/image";
 
 interface StateContext {
   totalPrice: number;
@@ -25,7 +26,6 @@ interface StateContext {
 }
 
 const Cart = () => {
-  const cartRef = useRef();
   const {
     totalPrice,
     totalQuantities,
@@ -54,7 +54,7 @@ const Cart = () => {
   };
 
   return (
-    <div className="cart-wrapper" ref={cartRef}>
+    <div className="cart-wrapper">
       <div className="cart-container">
         <button
           type="button"
@@ -88,6 +88,7 @@ const Cart = () => {
                 <img
                   src={urlForImage(item?.image[0])}
                   className="cart-product-image"
+                  alt={item.name}
                 />
                 <div className="item-desc">
                   <div className="flex top">

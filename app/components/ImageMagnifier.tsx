@@ -1,11 +1,12 @@
 "use client";
 
 import { urlForImage } from "@/sanity/lib/image";
+import Image from "next/image";
 import React, { useState } from "react";
-import { Image } from "sanity";
+import { Image as ImageType } from "sanity";
 
 interface ImageMagnifierProps {
-  image: Image[];
+  image: ImageType[];
 }
 
 const ImageMagnifier = ({ image }: ImageMagnifierProps) => {
@@ -17,6 +18,7 @@ const ImageMagnifier = ({ image }: ImageMagnifierProps) => {
         <img
           src={urlForImage(image && image[index])}
           className="product-detail-image"
+          alt="product-detail-image"
         />
       </div>
       <div className="small-images-container">
@@ -24,6 +26,7 @@ const ImageMagnifier = ({ image }: ImageMagnifierProps) => {
           <img
             key={i}
             src={urlForImage(item)}
+            alt="small-image"
             className={
               i === index ? "small-image selected-image" : "small-image"
             }

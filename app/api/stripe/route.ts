@@ -81,7 +81,7 @@ export async function POST(req: Request) {
 
       // return redirect(session.url);
     } catch (err) {
-      return new Response(JSON.stringify((err as Error).message), {
+      return new Response(JSON.stringify({ message: (err as Error).message }), {
         status: 500,
         headers: { "Content-Type": "text/plain" },
       });
