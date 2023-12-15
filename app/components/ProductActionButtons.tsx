@@ -3,6 +3,7 @@
 import React from "react";
 import { useStateContext } from "../context/StateContext";
 import { Product } from "@/types/product";
+import { useRouter } from "next/navigation";
 
 interface ProductActionButtonsProps {
   product: Product;
@@ -11,15 +12,15 @@ interface ProductActionButtonsProps {
 interface StateContext {
   qty: number;
   onAdd: (product: Product, qty: number) => void;
-  setShowCart: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const ProductActionButtons = ({ product }: ProductActionButtonsProps) => {
-  const { qty, onAdd, setShowCart } = useStateContext() as StateContext;
+  const { qty, onAdd } = useStateContext() as StateContext;
+  const router = useRouter();
 
   const handleBuyNow = () => {
     onAdd(product, qty);
-    setShowCart(true);
+    router.push("/cart");
   };
   return (
     <div className="buttons">

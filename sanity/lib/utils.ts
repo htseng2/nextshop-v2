@@ -17,7 +17,7 @@ export const runFireworks = () => {
     }
 
     var particleCount = 50 * (timeLeft / duration);
-    // since particles fall down, start a bit higher than random
+
     confetti({
       ...defaults,
       particleCount,

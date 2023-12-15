@@ -156,11 +156,12 @@ span.text-red {
 .hero-banner-container h3 {
   font-size: 4rem;
   margin-top: 4px;
+  margin-left: -4px;
 }
 .hero-banner-container h1 {
   color: white;
   font-size: 10em;
-  margin-left: -20px;
+  margin-left: -10px;
   text-transform: uppercase;
 }
 .hero-banner-image {
@@ -261,21 +262,11 @@ span.text-red {
   font-size: 14px;
   font-weight: 300;
 }
-.cart-wrapper {
-  width: 100vw;
-  background: rgba(0, 0, 0, 0.5);
-  position: fixed;
-  right: 0;
-  top: 0;
-  z-index: 100;
-  /* will-change: transform; */
-  transition: all 1s ease-in-out;
-}
 .cart-container {
-  height: 100vh;
-  width: 600px;
+  /* height: 100vh;
+  width: 600px; */
   background-color: white;
-  float: right;
+  /* float: right; */
   padding: 40px 10px;
   position: relative;
 }
@@ -374,7 +365,7 @@ span.text-red {
   border: none;
 }
 .cart-bottom {
-  position: absolute;
+  /* position: absolute; */
   bottom: 12px;
   right: 5px;
   width: 100%;
@@ -609,24 +600,45 @@ span.text-red {
 }
 
 @media screen and (max-width: 800px) {
+  html {
+    min-width: 320px;
+  }
+
   .hero-banner-container {
-    height: 560px;
+    height: auto;
+  }
+  .hero-banner-container div {
+    display: flex;
+    flex-direction: column;
   }
   .hero-banner-image {
-    width: 77%;
-    height: 62%;
-    top: -2%;
-    right: -6%;
+    position: relative;
+    top: auto;
+    right: auto;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: auto;
   }
   .footer-banner-container {
-    height: 560px;
+    height: auto;
     margin-top: 80px;
   }
   .footer-banner-image {
-    width: 77%;
-    left: 30%;
-    top: 6%;
-    height: 56%;
+    left: auto;
+    top: auto;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: auto;
+    order: 2;
+  }
+  .banner-desc .left {
+    order: 1;
+  }
+  .banner-desc .right {
+    order: 3;
   }
   .banner-desc .left h3 {
     font-weight: 900;
@@ -646,7 +658,9 @@ span.text-red {
     font-size: 14px;
   }
   .banner-desc {
-    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
     gap: 20px;
   }
   .hero-banner-container {
@@ -660,7 +674,7 @@ span.text-red {
   }
   .hero-banner-container button {
     margin-top: 90px;
-    z-index: 10000;
+    z-index: 100;
   }
   .desc {
     bottom: 60px;
@@ -673,9 +687,10 @@ span.text-red {
     height: 350px;
   }
   .cart-container {
-    width: 415px;
+    width: 100%;
     padding: 4px;
   }
+
   .cart-heading {
     margin-top: 35px;
   }

@@ -18,7 +18,7 @@ const Home = async () => {
       <HeroBanner heroBanner={bannerData.length ? bannerData[0] : undefined} />
       <div className="products-heading">
         <h2>Best Selling Products</h2>
-        <p>Speakers of many variations</p>
+        <p>Classic. Timeless. Essential.</p>
       </div>
       <div className="products-container">
         {products?.map((product) => (

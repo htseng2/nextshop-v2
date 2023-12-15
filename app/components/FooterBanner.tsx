@@ -1,6 +1,5 @@
 import { urlForImage } from "@/sanity/lib/image";
 import { Banner } from "@/types/banner";
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 

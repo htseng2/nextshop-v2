@@ -3,7 +3,6 @@ import React from "react";
 
 import { Banner } from "@/types/banner";
 import { urlForImage } from "@/sanity/lib/image";
-import Image from "next/image";
 
 interface HeroBannerProps {
   heroBanner?: Banner;

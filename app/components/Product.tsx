@@ -3,7 +3,6 @@ import Link from "next/link";
 
 import { Product } from "@/types/product";
 import { urlForImage } from "@/sanity/lib/image";
-import Image from "next/image";
 interface ProductProps {
   product: Product;
 }

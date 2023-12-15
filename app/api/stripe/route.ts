@@ -1,4 +1,3 @@
-import { redirect } from "next/navigation";
 import Stripe from "stripe";
 
 const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY!);
@@ -57,7 +56,6 @@ export async function POST(req: Request) {
               minimum: 1,
             },
             quantity: item.quantity,
-            // billing_address_collection: undefined,
           };
         }),
         success_url: `${origin}/success`,
@@ -73,13 +71,8 @@ export async function POST(req: Request) {
         status: 200,
         headers: {
           "Content-Type": "text/plain",
-          // "Access-Control-Allow-Origin": "*",
         },
       });
-
-      // return Response.redirect(session.url);
-
-      // return redirect(session.url);
     } catch (error) {
       console.log(error);
       return new Response(JSON.stringify(error), {
