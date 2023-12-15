@@ -60,8 +60,8 @@ export async function POST(req: Request) {
             // billing_address_collection: undefined,
           };
         }),
-        success_url: `${origin}/?success=true`,
-        cancel_url: `${origin}/?canceled=true`,
+        success_url: `${origin}/success`,
+        cancel_url: `${origin}/`,
       };
 
       // Create Checkout Sessions from body params.

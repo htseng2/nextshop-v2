@@ -11,10 +11,16 @@ interface ProductActionButtonsProps {
 interface StateContext {
   qty: number;
   onAdd: (product: Product, qty: number) => void;
+  setShowCart: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const ProductActionButtons = ({ product }: ProductActionButtonsProps) => {
-  const { qty, onAdd } = useStateContext() as StateContext;
+  const { qty, onAdd, setShowCart } = useStateContext() as StateContext;
+
+  const handleBuyNow = () => {
+    onAdd(product, qty);
+    setShowCart(true);
+  };
   return (
     <div className="buttons">
       <button
@@ -24,7 +30,7 @@ const ProductActionButtons = ({ product }: ProductActionButtonsProps) => {
       >
         Add to Cart
       </button>
-      <button type="button" className="buy-now">
+      <button type="button" className="buy-now" onClick={handleBuyNow}>
         Buy Now
       </button>
     </div>

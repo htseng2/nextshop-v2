@@ -100,7 +100,9 @@ const Cart = () => {
                         <span
                           className="minus"
                           onClick={() =>
-                            toggleCartItemQuantity(item._id, "dec")
+                            item.quantity === 1
+                              ? onRemove(item)
+                              : toggleCartItemQuantity(item._id, "dec")
                           }
                         >
                           <AiOutlineMinus />
