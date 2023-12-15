@@ -17,9 +17,9 @@ export async function POST(req: Request) {
     }
 
     const { cartItems } = JSON.parse(body);
-    // console.log(cartItems);
+    console.log(cartItems);
     const origin = req.headers.get("origin");
-    // console.log(origin);
+    console.log(origin);
 
     try {
       const params = {
@@ -41,7 +41,7 @@ export async function POST(req: Request) {
             )
             .replace("-webp", ".webp");
 
-          // console.log(newImg);
+          console.log(newImg);
 
           return {
             price_data: {
@@ -80,8 +80,9 @@ export async function POST(req: Request) {
       // return Response.redirect(session.url);
 
       // return redirect(session.url);
-    } catch (err) {
-      return new Response(JSON.stringify({ message: (err as Error).message }), {
+    } catch (error) {
+      console.log(error);
+      return new Response(JSON.stringify(error), {
         status: 500,
         headers: { "Content-Type": "text/plain" },
       });
